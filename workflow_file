@@ -1,0 +1,40 @@
+# Import necessary libraries
+import os
+import sys
+
+# Define the main function
+def main():
+    # Check if the system arguments are valid
+    if len(sys.argv) != 2:
+        print("Usage: python workflow_file.py <input_file>")
+        sys.exit(1)
+
+    # Get the input file from the system arguments
+    input_file = sys.argv[1]
+
+    # Check if the input file exists
+    if not os.path.isfile(input_file):
+        print(f"Error: {input_file} does not exist.")
+        sys.exit(1)
+
+    # Process the input file
+    process_file(input_file)
+
+# Define the function to process the input file
+def process_file(input_file):
+    # Open the input file
+    with open(input_file, 'r') as file:
+        # Read the lines from the file
+        lines = file.readlines()
+
+        # Process each line
+        for line in lines:
+            # Remove the newline character from the line
+            line = line.strip()
+
+            # Print the line
+            print(line)
+
+# Call the main function
+if __name__ == "__main__":
+    main()

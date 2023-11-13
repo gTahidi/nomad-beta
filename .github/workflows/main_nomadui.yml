@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - nomadui
 
 on:
@@ -27,8 +24,9 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: Zip build artifacts for deployment
+        run: |
+          zip -r release.zip .next public package.json package-lock.json
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
